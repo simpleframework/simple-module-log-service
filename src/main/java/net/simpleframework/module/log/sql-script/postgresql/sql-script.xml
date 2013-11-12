@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql-script>
+  <version>1.0.0</version>
+  <name>script</name>
+  <description></description>
+  <tran-sql>
+    <![CDATA[
+      create table sf_log_entity_update (
+        id char(32) not null,
+        beanid char(32) not null,
+        opid int4 not null,
+        valname varchar(32) not null,
+        fromval varchar(128),
+        toval varchar(128),
+        userid char(32) not null,
+        createdate timestamp not null,
+        ip varchar(32) not null,
+        description varchar(256),
+        primary key(id)
+      );
+    ]]>
+  </tran-sql>
+  <tran-sql>
+    <![CDATA[
+      create table sf_log_entity_delete (
+        id char(32) not null,
+        beanid char(32),
+        tblname varchar(32) not null,
+        userid char(32) not null,
+        createdate timestamp not null,
+        ip varchar(32) not null,
+        description varchar(256),
+        primary key(id)
+      );
+    ]]>
+  </tran-sql>
+  <tran-sql>
+    <![CDATA[
+      create table sf_log_download (
+        id char(32) not null,
+        beanid char(32) not null,
+        filesize int8 not null,
+        filetype varchar(16),
+        userid char(32),
+        createdate timestamp not null,
+        ip varchar(32) not null,
+        lastupdate timestamp,
+        description varchar(256),
+        primary key(id)
+      );
+    ]]>
+  </tran-sql>
+  <tran-sql>
+    <![CDATA[
+      create table sf_log_login (
+        id char(32) not null,
+        userid char(32),
+        createdate timestamp not null,
+        logoutdate timestamp,
+        ip varchar(32) not null,
+        description varchar(256),
+        primary key(id)
+      );
+    ]]>
+  </tran-sql>
+</sql-script>
