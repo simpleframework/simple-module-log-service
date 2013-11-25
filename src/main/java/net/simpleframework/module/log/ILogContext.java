@@ -39,4 +39,11 @@ public interface ILogContext extends IDbModuleContext {
 	 * @return
 	 */
 	IDownloadLogService getDownloadLogService();
+
+	/**
+	 * 获取页面统计日志服务
+	 * 
+	 * @return
+	 */
+	IPVLogService getPVLogService();
 }

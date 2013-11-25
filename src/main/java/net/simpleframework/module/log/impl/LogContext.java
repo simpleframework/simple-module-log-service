@@ -13,6 +13,7 @@ import net.simpleframework.module.log.IEntityDeleteLogService;
 import net.simpleframework.module.log.IEntityUpdateLogService;
 import net.simpleframework.module.log.ILogContext;
 import net.simpleframework.module.log.ILoginLogService;
+import net.simpleframework.module.log.IPVLogService;
 import net.simpleframework.module.log.LoginLog;
 
 /**
@@ -52,6 +53,11 @@ public abstract class LogContext extends AbstractDbModuleContext implements ILog
 	@Override
 	public IDownloadLogService getDownloadLogService() {
 		return singleton(DownloadLogService.class);
+	}
+
+	@Override
+	public IPVLogService getPVLogService() {
+		return singleton(PVLogService.class);
 	}
 
 	@Override
