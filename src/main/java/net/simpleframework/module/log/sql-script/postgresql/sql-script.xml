@@ -63,4 +63,19 @@
       );
     ]]>
   </tran-sql>
+  <tran-sql>
+    <![CDATA[
+      create table sf_log_pv_stat (
+        id char(32) not null,
+        lyear int4 not null,
+        lmonth int2 not null,
+        lday int2 not null,
+        lhour int2 not null,
+        pv int4 not null,
+        uv int4 not null,
+        ip int4 not null,
+        primary key(id)
+      );
+    ]]>
+  </tran-sql>
 </sql-script>
