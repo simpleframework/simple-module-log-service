@@ -1,5 +1,6 @@
 package net.simpleframework.module.log;
 
+import net.simpleframework.ctx.IModuleContextAware;
 import net.simpleframework.ctx.ModuleContextFactory;
 
 /**
@@ -8,7 +9,7 @@ import net.simpleframework.ctx.ModuleContextFactory;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public interface ILogContextAware {
+public interface ILogContextAware extends IModuleContextAware {
 
 	static ILogContext context = ModuleContextFactory.get(ILogContext.class);
 }
