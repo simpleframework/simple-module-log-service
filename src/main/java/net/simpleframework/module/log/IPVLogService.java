@@ -1,5 +1,7 @@
 package net.simpleframework.module.log;
 
+import java.util.Map;
+
 import net.simpleframework.ctx.service.ado.db.IDbBeanService;
 
 /**
@@ -20,4 +22,6 @@ public interface IPVLogService extends IDbBeanService<PVLog> {
 	 * @return
 	 */
 	PVLog getPVLog(int lyear, int lmonth, int lday, int lhour);
+
+	Map<Integer, PVLog> getHourStat(int lyear, int lmonth, int lday);
 }

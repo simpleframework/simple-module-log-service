@@ -1,5 +1,9 @@
 package net.simpleframework.module.log.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.ctx.service.ado.db.AbstractDbBeanService;
 import net.simpleframework.module.log.ILogContextAware;
 import net.simpleframework.module.log.IPVLogService;
@@ -26,5 +30,16 @@ public class PVLogService extends AbstractDbBeanService<PVLog> implements IPVLog
 			insert(log);
 		}
 		return log;
+	}
+
+	@Override
+	public Map<Integer, PVLog> getHourStat(final int lyear, final int lmonth, final int lday) {
+		final Map<Integer, PVLog> r = new HashMap<Integer, PVLog>();
+		final IDataQuery<PVLog> dq = query("lyear=? and lmonth=? and lday=?", lyear, lmonth, lday);
+		PVLog log;
+		while ((log = dq.next()) != null) {
+			r.put(log.getLhour(), log);
+		}
+		return r;
 	}
 }
