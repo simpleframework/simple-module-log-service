@@ -15,6 +15,7 @@ import net.simpleframework.module.log.ILogContext;
 import net.simpleframework.module.log.ILoginLogService;
 import net.simpleframework.module.log.IPVLogService;
 import net.simpleframework.module.log.LoginLog;
+import net.simpleframework.module.log.PVLog;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -27,7 +28,7 @@ public abstract class LogContext extends AbstractDbModuleContext implements ILog
 	@Override
 	protected DbEntityTable[] getEntityTables() {
 		return new DbEntityTable[] { EntityUpdateLog.TBL, EntityDeleteLog.TBL, LoginLog.TBL,
-				DownloadLog.TBL };
+				DownloadLog.TBL, PVLog.TBL };
 	}
 
 	@Override
