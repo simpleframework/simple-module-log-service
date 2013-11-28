@@ -24,6 +24,9 @@ public class PVLog extends AbstractIdBean {
 	/* 独立ip统计 */
 	private int ip;
 
+	/* 平均时长 */
+	private int averageTime;
+
 	public int getLyear() {
 		return lyear;
 	}
@@ -78,6 +81,14 @@ public class PVLog extends AbstractIdBean {
 
 	public void setIp(final int ip) {
 		this.ip = ip;
+	}
+
+	public int getAverageTime() {
+		return averageTime;
+	}
+
+	public void setAverageTime(final int averageTime) {
+		this.averageTime = averageTime;
 	}
 
 	public static final DbEntityTable TBL = new DbEntityTable(PVLog.class, "sf_log_pv_stat");
