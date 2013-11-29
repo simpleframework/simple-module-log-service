@@ -24,4 +24,8 @@ public interface IPVLogService extends IDbBeanService<PVLog> {
 	PVLog getPVLog(int lyear, int lmonth, int lday, int lhour);
 
 	Map<Integer, PVLog> getHourStat(int lyear, int lmonth, int lday);
+
+	Map<Integer, PVLog> getDayStat(int lyear, int lmonth);
+
+	Map<Integer, PVLog> getMonthStat(int lyear);
 }

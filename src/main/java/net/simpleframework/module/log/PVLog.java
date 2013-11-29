@@ -24,8 +24,14 @@ public class PVLog extends AbstractIdBean {
 	/* 独立ip统计 */
 	private int ip;
 
-	/* 平均时长 */
+	/* 平均访问时长 */
 	private int averageTime;
+
+	/* 最短访问时长 */
+	private int minTime;
+
+	/* 最长访问时长 */
+	private int maxTime;
 
 	public int getLyear() {
 		return lyear;
@@ -89,6 +95,22 @@ public class PVLog extends AbstractIdBean {
 
 	public void setAverageTime(final int averageTime) {
 		this.averageTime = averageTime;
+	}
+
+	public int getMinTime() {
+		return minTime;
+	}
+
+	public void setMinTime(final int minTime) {
+		this.minTime = minTime;
+	}
+
+	public int getMaxTime() {
+		return maxTime;
+	}
+
+	public void setMaxTime(final int maxTime) {
+		this.maxTime = maxTime;
 	}
 
 	public static final DbEntityTable TBL = new DbEntityTable(PVLog.class, "sf_log_pv_stat");

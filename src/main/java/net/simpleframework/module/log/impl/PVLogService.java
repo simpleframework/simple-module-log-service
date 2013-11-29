@@ -3,6 +3,7 @@ package net.simpleframework.module.log.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.simpleframework.ado.db.common.SQLValue;
 import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.ctx.service.ado.db.AbstractDbBeanService;
 import net.simpleframework.module.log.ILogContextAware;
@@ -39,6 +40,40 @@ public class PVLogService extends AbstractDbBeanService<PVLog> implements IPVLog
 		PVLog log;
 		while ((log = dq.next()) != null) {
 			r.put(log.getLhour(), log);
+		}
+		return r;
+	}
+
+	private final static String STAT_COLUMS = "sum(pv) as pv, sum(ip) as ip, sum(uv) as uv, "
+			+ "avg(averageTime) as averageTime, min(minTime) as minTime, max(maxTime) as maxTime";
+
+	@Override
+	public Map<Integer, PVLog> getDayStat(final int lyear, final int lmonth) {
+		final Map<Integer, PVLog> r = new HashMap<Integer, PVLog>();
+		final StringBuilder sql = new StringBuilder();
+		sql.append("select lday, ").append(STAT_COLUMS).append(" from ").append(PVLog.TBL.getName());
+		sql.append(" where lyear=? and lmonth=? group by lday");
+		final IDataQuery<PVLog> dq = getEntityManager().queryBeans(
+				new SQLValue(sql.toString(), lyear, lmonth));
+		PVLog log;
+		while ((log = dq.next()) != null) {
+			r.put(log.getLday(), log);
+		}
+		return r;
+	}
+
+	@Override
+	public Map<Integer, PVLog> getMonthStat(final int lyear) {
+		final Map<Integer, PVLog> r = new HashMap<Integer, PVLog>();
+		final StringBuilder sql = new StringBuilder();
+		sql.append("select lmonth, ").append(STAT_COLUMS).append(" from ")
+				.append(PVLog.TBL.getName());
+		sql.append(" where lyear=? group by lmonth");
+		final IDataQuery<PVLog> dq = getEntityManager().queryBeans(
+				new SQLValue(sql.toString(), lyear));
+		PVLog log;
+		while ((log = dq.next()) != null) {
+			r.put(log.getLmonth(), log);
 		}
 		return r;
 	}
