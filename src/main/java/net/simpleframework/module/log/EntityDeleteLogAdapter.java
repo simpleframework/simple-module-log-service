@@ -8,6 +8,8 @@ import net.simpleframework.ado.db.IDbDataQuery;
 import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.common.BeanUtils;
 import net.simpleframework.common.ID;
+import net.simpleframework.common.StringUtils;
+import net.simpleframework.common.web.html.HtmlUtils;
 import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
 
@@ -48,7 +50,7 @@ public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter {
 			log.setIp(wrapper.getIp());
 			log.setUserId(wrapper.getUser().getId());
 			log.setCreateDate(new Date());
-			log.setDescription(o.toString());
+			log.setDescription(StringUtils.substring(HtmlUtils.htmlToText(o.toString()), 128, true));
 			service.insert(log);
 		}
 	}
