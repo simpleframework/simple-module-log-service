@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import net.simpleframework.ado.IParamsValue;
+import net.simpleframework.ado.db.DbTableColumn;
 import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ado.db.common.EntityInterceptor;
-import net.simpleframework.ado.db.common.TableColumn;
 import net.simpleframework.common.BeanUtils;
 import net.simpleframework.common.Convert;
 import net.simpleframework.common.ID;
@@ -50,8 +50,8 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 		}
 
 		final Class<?> beanClass = manager.getEntityTable().getBeanClass();
-		final Map<String, TableColumn> map = TableColumn.getTableColumns(beanClass);
-		final List<TableColumn> columnList = new ArrayList<TableColumn>();
+		final Map<String, DbTableColumn> map = DbTableColumn.getTableColumns(beanClass);
+		final List<DbTableColumn> columnList = new ArrayList<DbTableColumn>();
 		final String[] columnArr = beanClass.getAnnotation(EntityInterceptor.class).columns();
 		String[] _columns = null;
 		if (columnArr != null && columnArr.length > 0) {
@@ -64,7 +64,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 				if (columns != null && !ArrayUtils.contains(columns, s)) {
 					continue;
 				}
-				final TableColumn col = map.get(s);
+				final DbTableColumn col = map.get(s);
 				if (col != null) {
 					columnList.add(col);
 				}
@@ -83,7 +83,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 		for (final Object bean : beans) {
 			final ID beanId = getId(bean);
 			final Map<String, Object> original = getOriginal(manager, beanId, _columns);
-			for (final TableColumn col : columnList) {
+			for (final DbTableColumn col : columnList) {
 				final String key = col.getName();
 				final Object toVal = BeanUtils.getProperty(bean, key);
 				final Object fromVal = Convert.convert(original.get(key),
