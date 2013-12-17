@@ -74,6 +74,9 @@
         pv int not null,
         uv int not null,
         ip int not null,
+        averagetime int not null,
+        mintime int not null,
+        maxtime int not null,
         primary key(id)
       );
     ]]>
