@@ -1,10 +1,9 @@
 package net.simpleframework.module.log.impl;
 
 import static net.simpleframework.common.I18n.$m;
-import net.simpleframework.ado.IADOManagerFactory;
-import net.simpleframework.ado.db.DbManagerFactory;
+import net.simpleframework.ado.db.DbEntityTable;
+import net.simpleframework.ado.db.IDbEntityTableRegistry;
 import net.simpleframework.ctx.AbstractADOModuleContext;
-import net.simpleframework.ctx.IApplicationContext;
 import net.simpleframework.ctx.Module;
 import net.simpleframework.ctx.permission.IPermissionConst;
 import net.simpleframework.module.log.DownloadLog;
@@ -25,17 +24,13 @@ import net.simpleframework.module.log.PVLog;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public abstract class LogContext extends AbstractADOModuleContext implements ILogContext {
+public abstract class LogContext extends AbstractADOModuleContext implements ILogContext,
+		IDbEntityTableRegistry {
 
 	@Override
-	public void onInit(final IApplicationContext application) throws Exception {
-		super.onInit(application);
-
-		final IADOManagerFactory aFactory = getADOManagerFactory();
-		if (aFactory instanceof DbManagerFactory) {
-			((DbManagerFactory) aFactory).regist(EntityUpdateLog.TBL, EntityDeleteLog.TBL,
-					LoginLog.TBL, DownloadLog.TBL, PVLog.TBL);
-		}
+	public DbEntityTable[] createEntityTables() {
+		return new DbEntityTable[] { EntityUpdateLog.TBL, EntityDeleteLog.TBL, LoginLog.TBL,
+				DownloadLog.TBL, PVLog.TBL };
 	}
 
 	@Override
