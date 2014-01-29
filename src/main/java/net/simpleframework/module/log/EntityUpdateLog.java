@@ -1,6 +1,5 @@
 package net.simpleframework.module.log;
 
-import net.simpleframework.ado.db.DbEntityTable;
 import net.simpleframework.common.ID;
 
 /**
@@ -64,9 +63,6 @@ public class EntityUpdateLog extends AbstractLogBean {
 	public void setToVal(final String toVal) {
 		this.toVal = toVal;
 	}
-
-	public static final DbEntityTable TBL = new DbEntityTable(EntityUpdateLog.class,
-			"sf_log_entity_update");
 
 	private static final long serialVersionUID = 4230418335331639147L;
 }

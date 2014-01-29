@@ -1,7 +1,6 @@
 package net.simpleframework.module.log;
 
 import net.simpleframework.ado.bean.AbstractIdBean;
-import net.simpleframework.ado.db.DbEntityTable;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -112,8 +111,6 @@ public class PVLog extends AbstractIdBean {
 	public void setMaxTime(final int maxTime) {
 		this.maxTime = maxTime;
 	}
-
-	public static final DbEntityTable TBL = new DbEntityTable(PVLog.class, "sf_log_pv_stat");
 
 	private static final long serialVersionUID = -4043914032466873444L;
 }

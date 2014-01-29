@@ -2,8 +2,6 @@ package net.simpleframework.module.log;
 
 import java.util.Date;
 
-import net.simpleframework.ado.db.DbEntityTable;
-
 /**
  * Licensed under the Apache License, Version 2.0
  * 
@@ -41,8 +39,6 @@ public class LoginLog extends AbstractLogBean {
 	// public void setBrowser(final String browser) {
 	// this.browser = browser;
 	// }
-
-	public static final DbEntityTable TBL = new DbEntityTable(LoginLog.class, "sf_log_login");
 
 	private static final long serialVersionUID = 6273920583368192366L;
 }

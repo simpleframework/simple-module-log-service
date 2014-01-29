@@ -1,6 +1,5 @@
 package net.simpleframework.module.log;
 
-import net.simpleframework.ado.db.DbEntityTable;
 import net.simpleframework.common.ID;
 
 /**
@@ -31,9 +30,6 @@ public class EntityDeleteLog extends AbstractLogBean {
 	public void setTblName(final String tblName) {
 		this.tblName = tblName;
 	}
-
-	public static final DbEntityTable TBL = new DbEntityTable(EntityDeleteLog.class,
-			"sf_log_entity_delete");
 
 	private static final long serialVersionUID = -709146688435761514L;
 }

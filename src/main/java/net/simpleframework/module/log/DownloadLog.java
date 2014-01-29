@@ -2,7 +2,6 @@ package net.simpleframework.module.log;
 
 import java.util.Date;
 
-import net.simpleframework.ado.db.DbEntityTable;
 import net.simpleframework.common.ID;
 
 /**
@@ -55,8 +54,6 @@ public class DownloadLog extends AbstractLogBean {
 	public void setLastUpdate(final Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-
-	public static final DbEntityTable TBL = new DbEntityTable(DownloadLog.class, "sf_log_download");
 
 	private static final long serialVersionUID = -6142167948018751623L;
 }

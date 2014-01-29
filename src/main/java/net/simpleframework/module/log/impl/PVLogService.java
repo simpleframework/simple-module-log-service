@@ -51,7 +51,8 @@ public class PVLogService extends AbstractDbBeanService<PVLog> implements IPVLog
 	public Map<Integer, PVLog> getDayStat(final int lyear, final int lmonth) {
 		final Map<Integer, PVLog> r = new HashMap<Integer, PVLog>();
 		final StringBuilder sql = new StringBuilder();
-		sql.append("select lday, ").append(STAT_COLUMS).append(" from ").append(PVLog.TBL.getName());
+		sql.append("select lday, ").append(STAT_COLUMS).append(" from ")
+				.append(getTablename(PVLog.class));
 		sql.append(" where lyear=? and lmonth=? group by lday");
 		final IDataQuery<PVLog> dq = getEntityManager().queryBeans(
 				new SQLValue(sql.toString(), lyear, lmonth));
@@ -67,7 +68,7 @@ public class PVLogService extends AbstractDbBeanService<PVLog> implements IPVLog
 		final Map<Integer, PVLog> r = new HashMap<Integer, PVLog>();
 		final StringBuilder sql = new StringBuilder();
 		sql.append("select lmonth, ").append(STAT_COLUMS).append(" from ")
-				.append(PVLog.TBL.getName());
+				.append(getTablename(PVLog.class));
 		sql.append(" where lyear=? group by lmonth");
 		final IDataQuery<PVLog> dq = getEntityManager().queryBeans(
 				new SQLValue(sql.toString(), lyear));

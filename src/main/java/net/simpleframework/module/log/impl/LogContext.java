@@ -29,8 +29,12 @@ public abstract class LogContext extends AbstractADOModuleContext implements ILo
 
 	@Override
 	public DbEntityTable[] createEntityTables() {
-		return new DbEntityTable[] { EntityUpdateLog.TBL, EntityDeleteLog.TBL, LoginLog.TBL,
-				DownloadLog.TBL, PVLog.TBL };
+		return new DbEntityTable[] {
+				new DbEntityTable(EntityUpdateLog.class, "sf_log_entity_update"),
+				new DbEntityTable(EntityDeleteLog.class, "sf_log_entity_delete"),
+				new DbEntityTable(LoginLog.class, "sf_log_login"),
+				new DbEntityTable(DownloadLog.class, "sf_log_download"),
+				new DbEntityTable(PVLog.class, "sf_log_pv_stat") };
 	}
 
 	@Override
