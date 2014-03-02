@@ -48,7 +48,8 @@ public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter {
 				}
 			}
 			log.setIp(wrapper.getIp());
-			log.setUserId(wrapper.getUser().getId());
+			log.setUserId(wrapper.getUserId());
+			log.setUserText(wrapper.toString());
 			log.setCreateDate(new Date());
 			log.setDescription(StringUtils.substring(HtmlUtils.htmlToText(o.toString()), 128, true));
 			service.insert(log);

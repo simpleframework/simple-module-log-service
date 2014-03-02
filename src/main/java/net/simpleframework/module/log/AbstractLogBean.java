@@ -12,12 +12,22 @@ import net.simpleframework.ado.bean.IDescriptionBeanAware;
 @SuppressWarnings("serial")
 public abstract class AbstractLogBean extends AbstractUserAwareBean implements
 		IDescriptionBeanAware {
+	/* 操作人显示名称 */
+	private String userText;
 
 	/* 操作人ip */
 	private String ip;
 
 	/* 描述 */
 	private String description;
+
+	public String getUserText() {
+		return userText;
+	}
+
+	public void setUserText(final String userText) {
+		this.userText = userText;
+	}
 
 	public String getIp() {
 		return ip;

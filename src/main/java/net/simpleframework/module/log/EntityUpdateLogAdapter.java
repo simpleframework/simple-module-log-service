@@ -45,7 +45,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 		super.onBeforeUpdate(manager, columns, beans);
 		final LoginWrapper wrapper = LoginUser.get();
 		ID loginId;
-		if (wrapper == null || (loginId = wrapper.getUser().getId()) == null) {
+		if (wrapper == null || (loginId = wrapper.getUserId()) == null) {
 			return;
 		}
 
@@ -99,6 +99,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 				field.setFromVal(covertToString(fromVal));
 				field.setToVal(covertToString(toVal));
 				field.setUserId(loginId);
+				field.setUserText(wrapper.toString());
 				field.setCreateDate(now);
 				field.setIp(wrapper.getIp());
 				field.setDescription(DescriptionLocalUtils.get(beanId));

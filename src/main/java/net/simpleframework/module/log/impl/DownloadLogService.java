@@ -27,7 +27,7 @@ public class DownloadLogService extends AbstractLogBeanService<DownloadLog> impl
 	public void log(final Object beanId, final long size, final String type, final String desc,
 			final int expirationTime) {
 		final LoginWrapper wrapper = LoginUser.get();
-		final ID loginId = wrapper != null ? wrapper.getUser().getId() : null;
+		final ID loginId = wrapper != null ? wrapper.getUserId() : null;
 
 		DownloadLog dLog = null;
 		if (loginId != null && (dLog = getBean("beanId=? and userId=?", beanId, loginId)) != null) {
@@ -55,6 +55,9 @@ public class DownloadLogService extends AbstractLogBeanService<DownloadLog> impl
 		dLog.setFiletype(type);
 		dLog.setCreateDate(new Date());
 		dLog.setUserId(loginId);
+		if (wrapper != null) {
+			dLog.setUserText(wrapper.toString());
+		}
 		dLog.setIp(wrapper.getIp());
 		dLog.setDescription(desc);
 		insert(dLog);

@@ -3,6 +3,7 @@ package net.simpleframework.module.log.impl;
 import java.util.Date;
 
 import net.simpleframework.common.ID;
+import net.simpleframework.ctx.permission.PermissionUser;
 import net.simpleframework.module.log.ILoginLogService;
 import net.simpleframework.module.log.LoginLog;
 
@@ -17,7 +18,13 @@ public class LoginLogService extends AbstractLogService<LoginLog> implements ILo
 	@Override
 	public LoginLog log(final Object accountId, final String ip, final String desc) {
 		final LoginLog log = createBean();
-		log.setUserId(ID.of(accountId));
+
+		final PermissionUser user = context.getPermission().getUser(accountId);
+		final ID userId = user.getId();
+		if (userId != null) {
+			log.setUserId(userId);
+			log.setUserText(user.toString());
+		}
 		log.setCreateDate(new Date());
 		log.setIp(ip);
 		log.setDescription(desc);
