@@ -4,8 +4,8 @@ import java.util.Date;
 
 import net.simpleframework.ado.IParamsValue;
 import net.simpleframework.ado.bean.IIdBeanAware;
-import net.simpleframework.ado.db.IDbDataQuery;
 import net.simpleframework.ado.db.IDbEntityManager;
+import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.common.BeanUtils;
 import net.simpleframework.common.ID;
 import net.simpleframework.common.StringUtils;
@@ -29,7 +29,7 @@ public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter {
 			return;
 		}
 
-		final IDbDataQuery<?> dq = manager.queryBeans(paramsValue);
+		final IDataQuery<?> dq = manager.queryBeans(paramsValue);
 		if (dq.getCount() == 0) {
 			return;
 		}
