@@ -19,7 +19,7 @@ public class LoginLogService extends AbstractLogService<LoginLog> implements ILo
 	public LoginLog log(final Object accountId, final String ip, final String desc) {
 		final LoginLog log = createBean();
 
-		final PermissionUser user = context.getPermission().getUser(accountId);
+		final PermissionUser user = logContext.getPermission().getUser(accountId);
 		final ID userId = user.getId();
 		if (userId != null) {
 			log.setUserId(userId);

@@ -24,7 +24,7 @@ public class EntityDeleteLogService extends AbstractLogService<EntityDeleteLog> 
 			public void onBeforeDelete(final IDbEntityManager<?> manager,
 					final IParamsValue paramsValue) {
 				super.onBeforeDelete(manager, paramsValue);
-				final EntityUpdateLogService uService = (EntityUpdateLogService) context
+				final EntityUpdateLogService uService = (EntityUpdateLogService) logContext
 						.getEntityUpdateLogService();
 				for (final EntityDeleteLog log : coll(paramsValue)) {
 					final ID beanId = log.getBeanId();

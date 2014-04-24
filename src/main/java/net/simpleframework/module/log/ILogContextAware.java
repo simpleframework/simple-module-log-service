@@ -11,5 +11,5 @@ import net.simpleframework.ctx.ModuleContextFactory;
  */
 public interface ILogContextAware extends IModuleContextAware {
 
-	static ILogContext context = ModuleContextFactory.get(ILogContext.class);
+	static ILogContext logContext = ModuleContextFactory.get(ILogContext.class);
 }
