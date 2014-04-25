@@ -1,7 +1,10 @@
 package net.simpleframework.module.log.impl;
 
+import net.simpleframework.ado.FilterItems;
 import net.simpleframework.ado.query.DataQueryUtils;
 import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.ctx.service.ado.db.AbstractDbBeanService;
+import net.simpleframework.module.log.ILogContextAware;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -9,7 +12,9 @@ import net.simpleframework.ado.query.IDataQuery;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public abstract class AbstractLogBeanService<T> extends AbstractLogService<T> {
+public abstract class AbstractLogBeanService<T> extends AbstractDbBeanService<T> implements
+		ILogContextAware {
+
 	public int countLog(final Object bean) {
 		return count("beanId=?", bean);
 	}
@@ -18,6 +23,6 @@ public abstract class AbstractLogBeanService<T> extends AbstractLogService<T> {
 		if (bean == null) {
 			return DataQueryUtils.nullQuery();
 		}
-		return query("beanId=? order by createDate desc", bean);
+		return queryByParams(FilterItems.of().addEqual("beanId", bean));
 	}
 }
