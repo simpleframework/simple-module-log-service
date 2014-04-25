@@ -23,6 +23,6 @@ public abstract class AbstractLogBeanService<T> extends AbstractDbBeanService<T>
 		if (bean == null) {
 			return DataQueryUtils.nullQuery();
 		}
-		return queryByParams(FilterItems.of().addEqual("beanId", bean));
+		return queryByParams(FilterItems.of("beanId", bean));
 	}
 }
