@@ -78,7 +78,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 		}
 
 		final IEntityUpdateLogService service = context.getEntityUpdateLogService();
-		final int opId = service.max("opId");
+		final int opId = service.max("opId").intValue();
 		final Date now = new Date();
 		for (final Object bean : beans) {
 			final ID beanId = getId(bean);
