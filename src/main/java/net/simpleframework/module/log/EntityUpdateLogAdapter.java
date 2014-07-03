@@ -61,7 +61,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 		}
 		if (_columns != null) {
 			for (final String s : _columns) {
-				if (columns != null && !ArrayUtils.contains(columns, s)) {
+				if (columns != null && !ArrayUtils.contains(columns, s, true)) {
 					continue;
 				}
 				final DbTableColumn col = map.get(s);
