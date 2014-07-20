@@ -5,7 +5,6 @@ import net.simpleframework.ado.db.DbEntityTable;
 import net.simpleframework.ado.db.IDbEntityTableRegistry;
 import net.simpleframework.ctx.AbstractADOModuleContext;
 import net.simpleframework.ctx.Module;
-import net.simpleframework.ctx.permission.IPermissionConst;
 import net.simpleframework.module.log.DownloadLog;
 import net.simpleframework.module.log.EntityDeleteLog;
 import net.simpleframework.module.log.EntityUpdateLog;
@@ -35,11 +34,6 @@ public abstract class LogContext extends AbstractADOModuleContext implements ILo
 				new DbEntityTable(LoginLog.class, "sf_log_login"),
 				new DbEntityTable(DownloadLog.class, "sf_log_download"),
 				new DbEntityTable(PVLog.class, "sf_log_pv_stat") };
-	}
-
-	@Override
-	public String getManagerRole() {
-		return IPermissionConst.ROLE_MANAGER;
 	}
 
 	@Override
