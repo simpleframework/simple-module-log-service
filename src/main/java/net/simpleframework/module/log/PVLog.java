@@ -65,7 +65,7 @@ public class PVLog extends AbstractIdBean {
 	}
 
 	public int getPv() {
-		return pv > 50000 ? pv + 300000 : pv;
+		return pv;
 	}
 
 	public void setPv(final int pv) {
@@ -73,7 +73,7 @@ public class PVLog extends AbstractIdBean {
 	}
 
 	public int getUv() {
-		return uv > 2000 ? uv + 15000 : uv;
+		return uv;
 	}
 
 	public void setUv(final int uv) {
@@ -81,7 +81,7 @@ public class PVLog extends AbstractIdBean {
 	}
 
 	public int getIp() {
-		return ip > 1000 ? ip + 5000 : ip;
+		return ip;
 	}
 
 	public void setIp(final int ip) {
