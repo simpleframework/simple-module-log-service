@@ -1,5 +1,6 @@
 package net.simpleframework.module.log.impl;
 
+import net.simpleframework.ado.ColumnData;
 import net.simpleframework.ado.FilterItems;
 import net.simpleframework.ado.query.DataQueryUtils;
 import net.simpleframework.ado.query.IDataQuery;
@@ -19,10 +20,10 @@ public abstract class AbstractLogBeanService<T> extends AbstractDbBeanService<T>
 		return count("beanId=?", bean);
 	}
 
-	public IDataQuery<T> queryLog(final Object bean) {
+	public IDataQuery<T> queryLog(final Object bean, final ColumnData... oCols) {
 		if (bean == null) {
 			return DataQueryUtils.nullQuery();
 		}
-		return queryByParams(FilterItems.of("beanId", bean));
+		return queryByParams(FilterItems.of("beanId", bean), oCols);
 	}
 }

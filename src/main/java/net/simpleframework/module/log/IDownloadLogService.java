@@ -1,5 +1,6 @@
 package net.simpleframework.module.log;
 
+import net.simpleframework.ado.ColumnData;
 import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.ctx.service.ado.db.IDbBeanService;
 
@@ -28,9 +29,10 @@ public interface IDownloadLogService extends IDbBeanService<DownloadLog> {
 	 * 查询操作bean的下载日志
 	 * 
 	 * @param bean
+	 * @param oCols
 	 * @return
 	 */
-	IDataQuery<DownloadLog> queryLog(Object bean);
+	IDataQuery<DownloadLog> queryLog(Object bean, ColumnData... oCols);
 
 	/**
 	 * 指定bean的下载数

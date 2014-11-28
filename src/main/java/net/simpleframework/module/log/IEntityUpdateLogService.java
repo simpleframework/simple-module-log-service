@@ -1,5 +1,6 @@
 package net.simpleframework.module.log;
 
+import net.simpleframework.ado.ColumnData;
 import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.ctx.service.ado.db.IDbBeanService;
 
@@ -12,9 +13,9 @@ import net.simpleframework.ctx.service.ado.db.IDbBeanService;
 public interface IEntityUpdateLogService extends IDbBeanService<EntityUpdateLog> {
 
 	/**
-	 * 
 	 * @param bean
+	 * @param oCols
 	 * @return
 	 */
-	IDataQuery<EntityUpdateLog> queryLog(Object bean);
+	IDataQuery<EntityUpdateLog> queryLog(Object bean, ColumnData... oCols);
 }
