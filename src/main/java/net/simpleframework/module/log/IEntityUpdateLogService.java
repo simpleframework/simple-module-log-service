@@ -18,4 +18,14 @@ public interface IEntityUpdateLogService extends IDbBeanService<EntityUpdateLog>
 	 * @return
 	 */
 	IDataQuery<EntityUpdateLog> queryLog(Object bean, ColumnData... oCols);
+
+	/**
+	 * 获取更新日志对象
+	 * 
+	 * @param bean
+	 * @param vname
+	 * @param val
+	 * @return
+	 */
+	EntityUpdateLog getLog(Object bean, String vname, String val);
 }

@@ -11,4 +11,9 @@ import net.simpleframework.module.log.IEntityUpdateLogService;
  */
 public class EntityUpdateLogService extends AbstractLogBeanService<EntityUpdateLog> implements
 		IEntityUpdateLogService {
+
+	@Override
+	public EntityUpdateLog getLog(final Object bean, final String vname, final String val) {
+		return getBean("beanid=? and valname=? and toval=?", getIdParam(bean), vname, val);
+	}
 }
