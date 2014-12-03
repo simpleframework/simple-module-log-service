@@ -27,5 +27,5 @@ public interface IEntityUpdateLogService extends IDbBeanService<EntityUpdateLog>
 	 * @param val
 	 * @return
 	 */
-	EntityUpdateLog getLog(Object bean, String vname, String val);
+	EntityUpdateLog getLastLog(Object bean, String vname, String val);
 }

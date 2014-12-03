@@ -13,7 +13,8 @@ public class EntityUpdateLogService extends AbstractLogBeanService<EntityUpdateL
 		IEntityUpdateLogService {
 
 	@Override
-	public EntityUpdateLog getLog(final Object bean, final String vname, final String val) {
-		return getBean("beanid=? and valname=? and toval=?", getIdParam(bean), vname, val);
+	public EntityUpdateLog getLastLog(final Object bean, final String vname, final String val) {
+		return getBean("beanid=? and valname=? and toval=? order by createdate desc",
+				getIdParam(bean), vname, val);
 	}
 }
