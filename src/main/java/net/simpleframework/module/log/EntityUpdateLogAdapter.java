@@ -85,9 +85,9 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 			final Map<String, Object> original = getOriginal(manager, beanId, _columns);
 			for (final DbTableColumn col : columnList) {
 				final String key = col.getName();
-				final Object toVal = BeanUtils.getProperty(bean, key);
-				final Object fromVal = Convert.convert(original.get(key),
-						BeanUtils.getPropertyType(bean, key));
+				final Object toVal = toNull(BeanUtils.getProperty(bean, key));
+				final Object fromVal = toNull(Convert.convert(original.get(key),
+						BeanUtils.getPropertyType(bean, key)));
 				if (ObjectUtils.objectEquals(fromVal, toVal)) {
 					continue;
 				}
@@ -106,6 +106,13 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 				service.insert(field);
 			}
 		}
+	}
+
+	protected Object toNull(final Object o) {
+		if ("".equals(o)) {
+			return null;
+		}
+		return o;
 	}
 
 	@Override
