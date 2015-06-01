@@ -41,7 +41,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 
 	@Override
 	public void onBeforeUpdate(final IDbEntityManager<?> manager, final String[] columns,
-			final Object[] beans) {
+			final Object[] beans) throws Exception {
 		super.onBeforeUpdate(manager, columns, beans);
 		final LoginWrapper wrapper = LoginUser.get();
 		ID loginId;
@@ -116,7 +116,8 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 	}
 
 	@Override
-	public void onBeforeDelete(final IDbEntityManager<?> manager, final IParamsValue paramsValue) {
+	public void onBeforeDelete(final IDbEntityManager<?> manager, final IParamsValue paramsValue)
+			throws Exception {
 		super.onBeforeDelete(manager, paramsValue);
 		// 当被删除后,删除日志??
 	}

@@ -24,7 +24,7 @@ public class EntityDeleteLogService extends AbstractDbBeanService<EntityDeleteLo
 		addListener(new DbEntityAdapterEx() {
 			@Override
 			public void onBeforeDelete(final IDbEntityManager<?> manager,
-					final IParamsValue paramsValue) {
+					final IParamsValue paramsValue) throws Exception {
 				super.onBeforeDelete(manager, paramsValue);
 				final EntityUpdateLogService uService = (EntityUpdateLogService) logContext
 						.getEntityUpdateLogService();

@@ -22,7 +22,8 @@ import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
 public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter {
 
 	@Override
-	public void onBeforeDelete(final IDbEntityManager<?> manager, final IParamsValue paramsValue) {
+	public void onBeforeDelete(final IDbEntityManager<?> manager, final IParamsValue paramsValue)
+			throws Exception {
 		super.onBeforeDelete(manager, paramsValue);
 		final LoginWrapper wrapper = LoginUser.get();
 		if (wrapper == null) {
