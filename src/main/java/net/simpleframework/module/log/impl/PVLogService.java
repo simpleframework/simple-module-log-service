@@ -54,7 +54,7 @@ public class PVLogService extends AbstractDbBeanService<PVLog> implements IPVLog
 		sql.append("select lday, ").append(STAT_COLUMS).append(" from ")
 				.append(getTablename(PVLog.class));
 		sql.append(" where lyear=? and lmonth=? group by lday");
-		final IDataQuery<PVLog> dq = query(new SQLValue(sql.toString(), lyear, lmonth));
+		final IDataQuery<PVLog> dq = query(new SQLValue(sql, lyear, lmonth));
 		PVLog log;
 		while ((log = dq.next()) != null) {
 			r.put(log.getLday(), log);
@@ -69,7 +69,7 @@ public class PVLogService extends AbstractDbBeanService<PVLog> implements IPVLog
 		sql.append("select lmonth, ").append(STAT_COLUMS).append(" from ")
 				.append(getTablename(PVLog.class));
 		sql.append(" where lyear=? group by lmonth");
-		final IDataQuery<PVLog> dq = query(new SQLValue(sql.toString(), lyear));
+		final IDataQuery<PVLog> dq = query(new SQLValue(sql, lyear));
 		PVLog log;
 		while ((log = dq.next()) != null) {
 			r.put(log.getLmonth(), log);
