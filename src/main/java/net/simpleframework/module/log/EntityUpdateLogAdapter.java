@@ -78,21 +78,25 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 		}
 
 		final IEntityUpdateLogService service = context.getEntityUpdateLogService();
-		final int opId = service.max("opId").intValue();
+
 		final Date now = new Date();
 		for (final Object bean : beans) {
 			final ID beanId = getId(bean);
+			final int opId = service.max("opId", "beanId=?", beanId).intValue();
 			final Map<String, Object> original = getOriginal(manager, beanId, _columns);
 			for (final DbTableColumn col : columnList) {
 				final String key = col.getName();
-				final Object toVal = toObject(BeanUtils.getProperty(bean, key));
 				final Object fromVal = toObject(Convert.convert(original.get(key),
 						BeanUtils.getPropertyType(bean, key)));
+				if (opId == 0 && fromVal == null) {
+					// 第一次，且fromVal为空，不记录
+					continue;
+				}
+				final Object toVal = toObject(BeanUtils.getProperty(bean, key));
 				if (ObjectUtils.objectEquals(fromVal, toVal)) {
 					continue;
 				}
 				final EntityUpdateLog field = service.createBean();
-
 				field.setBeanId(beanId);
 				field.setOpId(opId + 1);
 				field.setValName(key);
