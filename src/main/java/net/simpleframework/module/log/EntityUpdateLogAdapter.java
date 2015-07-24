@@ -24,7 +24,7 @@ import net.simpleframework.module.common.DescriptionLogUtils;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
+public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 
 	protected String covertToString(final Object val) {
 		if (val instanceof Enum) {
@@ -40,7 +40,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 	}
 
 	@Override
-	public void onBeforeUpdate(final IDbEntityManager<?> manager, final String[] columns,
+	public void onBeforeUpdate(final IDbEntityManager<Object> manager, final String[] columns,
 			final Object[] beans) throws Exception {
 		super.onBeforeUpdate(manager, columns, beans);
 		final LoginWrapper wrapper = LoginUser.get();
@@ -123,7 +123,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter {
 	}
 
 	@Override
-	public void onBeforeDelete(final IDbEntityManager<?> manager, final IParamsValue paramsValue)
+	public void onBeforeDelete(final IDbEntityManager<Object> manager, final IParamsValue paramsValue)
 			throws Exception {
 		super.onBeforeDelete(manager, paramsValue);
 		// 当被删除后,删除日志??

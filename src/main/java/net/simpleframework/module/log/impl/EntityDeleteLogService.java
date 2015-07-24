@@ -21,14 +21,14 @@ public class EntityDeleteLogService extends AbstractDbBeanService<EntityDeleteLo
 	public void onInit() throws Exception {
 		super.onInit();
 
-		addListener(new DbEntityAdapterEx() {
+		addListener(new DbEntityAdapterEx<EntityDeleteLog>() {
 			@Override
-			public void onBeforeDelete(final IDbEntityManager<?> manager,
+			public void onBeforeDelete(final IDbEntityManager<EntityDeleteLog> manager,
 					final IParamsValue paramsValue) throws Exception {
 				super.onBeforeDelete(manager, paramsValue);
 				final EntityUpdateLogService uService = (EntityUpdateLogService) logContext
 						.getEntityUpdateLogService();
-				for (final EntityDeleteLog log : coll(paramsValue)) {
+				for (final EntityDeleteLog log : coll(manager, paramsValue)) {
 					final ID beanId = log.getBeanId();
 					if (beanId != null) {
 						// 删除修改日志
