@@ -32,10 +32,12 @@ public class EntityUpdateLog extends AbstractEntityLogBean {
 		this.opId = opId;
 	}
 
+	@Override
 	public ID getBeanId() {
 		return beanId;
 	}
 
+	@Override
 	public void setBeanId(final ID beanId) {
 		this.beanId = beanId;
 	}
