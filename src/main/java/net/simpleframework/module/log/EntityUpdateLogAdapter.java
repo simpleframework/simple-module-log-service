@@ -63,12 +63,10 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 			return;
 		}
 
-		final IEntityUpdateLogService service = context.getEntityUpdateLogService();
-
 		final Date now = new Date();
 		for (final Object bean : beans) {
 			final ID beanId = getId(bean);
-			final int opId = service.max("opId", "beanId=?", beanId).intValue();
+			final int opId = _logUpdateService.max("opId", "beanId=?", beanId).intValue();
 			final Map<String, Object> original = getOriginal(manager, beanId, _columns);
 			for (final DbTableColumn col : columnList) {
 				final String key = col.getName();
@@ -82,7 +80,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 				if (ObjectUtils.objectEquals(fromVal, toVal)) {
 					continue;
 				}
-				final EntityUpdateLog log = service.createBean();
+				final EntityUpdateLog log = _logUpdateService.createBean();
 				initLog(log, wrapper);
 				log.setBeanId(beanId);
 				log.setTblName(manager.getEntityTable().getName());
@@ -92,7 +90,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 				log.setToVal(covertToString(toVal));
 				log.setCreateDate(now);
 				log.setDescription(DescriptionLogUtils.get(beanId));
-				service.insert(log);
+				_logUpdateService.insert(log);
 			}
 		}
 	}

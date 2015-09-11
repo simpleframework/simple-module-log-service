@@ -33,16 +33,15 @@ public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter<Object> {
 		}
 
 		final Date now = new Date();
-		final IEntityDeleteLogService service = context.getEntityDeleteLogService();
 		Object o;
 		while ((o = dq.next()) != null) {
-			final EntityDeleteLog log = service.createBean();
+			final EntityDeleteLog log = _logDeleteService.createBean();
 			initLog(log, wrapper);
 			log.setTblName(manager.getEntityTable().getName());
 			log.setBeanId(getId(o));
 			log.setCreateDate(now);
 			log.setDescription(StringUtils.substring(HtmlUtils.htmlToText(o.toString()), 128, true));
-			service.insert(log);
+			_logDeleteService.insert(log);
 		}
 	}
 }
