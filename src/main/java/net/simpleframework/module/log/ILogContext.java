@@ -26,6 +26,8 @@ public interface ILogContext extends IModuleContext {
 	 */
 	IEntityDeleteLogService getEntityDeleteLogService();
 
+	IEntityInsertLogService getEntityInsertLogService();
+
 	/**
 	 * 获取登录log服务
 	 * 

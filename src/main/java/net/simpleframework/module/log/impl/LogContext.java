@@ -11,6 +11,7 @@ import net.simpleframework.module.log.EntityInsertLog;
 import net.simpleframework.module.log.EntityUpdateLog;
 import net.simpleframework.module.log.IDownloadLogService;
 import net.simpleframework.module.log.IEntityDeleteLogService;
+import net.simpleframework.module.log.IEntityInsertLogService;
 import net.simpleframework.module.log.IEntityUpdateLogService;
 import net.simpleframework.module.log.ILogContext;
 import net.simpleframework.module.log.ILoginLogService;
@@ -24,7 +25,7 @@ import net.simpleframework.module.log.PVLog;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public abstract class LogContext extends AbstractADOModuleContext implements ILogContext,
+public class LogContext extends AbstractADOModuleContext implements ILogContext,
 		IDbEntityTableRegistry {
 
 	@Override
@@ -44,6 +45,11 @@ public abstract class LogContext extends AbstractADOModuleContext implements ILo
 	@Override
 	public IEntityUpdateLogService getEntityUpdateLogService() {
 		return singleton(EntityUpdateLogService.class);
+	}
+
+	@Override
+	public IEntityInsertLogService getEntityInsertLogService() {
+		return singleton(EntityInsertLogService.class);
 	}
 
 	@Override

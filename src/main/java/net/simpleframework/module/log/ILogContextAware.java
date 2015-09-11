@@ -12,4 +12,18 @@ import net.simpleframework.ctx.ModuleContextFactory;
 public interface ILogContextAware extends IModuleContextAware {
 
 	static ILogContext logContext = ModuleContextFactory.get(ILogContext.class);
+
+	/* 实体bean日志服务 */
+	static final IEntityUpdateLogService _logUpdateService = logContext.getEntityUpdateLogService();
+	static final IEntityInsertLogService _logInsertService = logContext.getEntityInsertLogService();
+	static final IEntityDeleteLogService _logDeleteService = logContext.getEntityDeleteLogService();
+
+	/* 登录日志服务 */
+	static final ILoginLogService _logLoginService = logContext.getLoginLogService();
+
+	/* 下载日志服务 */
+	static final IDownloadLogService _logDownloadService = logContext.getDownloadLogService();
+
+	/* pv日志服务 */
+	static final IPVLogService _logPVService = logContext.getPVLogService();
 }
