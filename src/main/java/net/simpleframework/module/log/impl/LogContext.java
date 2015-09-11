@@ -7,6 +7,7 @@ import net.simpleframework.ctx.AbstractADOModuleContext;
 import net.simpleframework.ctx.Module;
 import net.simpleframework.module.log.DownloadLog;
 import net.simpleframework.module.log.EntityDeleteLog;
+import net.simpleframework.module.log.EntityInsertLog;
 import net.simpleframework.module.log.EntityUpdateLog;
 import net.simpleframework.module.log.IDownloadLogService;
 import net.simpleframework.module.log.IEntityDeleteLogService;
@@ -30,9 +31,13 @@ public abstract class LogContext extends AbstractADOModuleContext implements ILo
 	public DbEntityTable[] createEntityTables() {
 		return new DbEntityTable[] {
 				new DbEntityTable(EntityUpdateLog.class, "sf_log_entity_update"),
+				new DbEntityTable(EntityInsertLog.class, "sf_log_entity_insert"),
 				new DbEntityTable(EntityDeleteLog.class, "sf_log_entity_delete"),
+
 				new DbEntityTable(LoginLog.class, "sf_log_login"),
+
 				new DbEntityTable(DownloadLog.class, "sf_log_download"),
+
 				new DbEntityTable(PVLog.class, "sf_log_pv_stat") };
 	}
 

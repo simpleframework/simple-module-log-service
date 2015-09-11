@@ -26,26 +26,12 @@ import net.simpleframework.module.common.DescriptionLogUtils;
  */
 public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 
-	protected String covertToString(final Object val) {
-		if (val instanceof Enum) {
-			return ((Enum<?>) val).name();
-		} else if (val instanceof Date) {
-			return Convert.toDateString((Date) val);
-		}
-		return Convert.toString(val);
-	}
-
-	protected ID getId(final Object bean) {
-		return (ID) BeanUtils.getProperty(bean, "id");
-	}
-
 	@Override
 	public void onBeforeUpdate(final IDbEntityManager<Object> manager, final String[] columns,
 			final Object[] beans) throws Exception {
 		super.onBeforeUpdate(manager, columns, beans);
 		final LoginWrapper wrapper = LoginUser.get();
-		ID loginId;
-		if (wrapper == null || (loginId = wrapper.getUserId()) == null) {
+		if (wrapper == null || wrapper.getUserId() == null) {
 			return;
 		}
 
@@ -96,18 +82,17 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 				if (ObjectUtils.objectEquals(fromVal, toVal)) {
 					continue;
 				}
-				final EntityUpdateLog field = service.createBean();
-				field.setBeanId(beanId);
-				field.setOpId(opId + 1);
-				field.setValName(key);
-				field.setFromVal(covertToString(fromVal));
-				field.setToVal(covertToString(toVal));
-				field.setUserId(loginId);
-				field.setUserText(wrapper.getUser().getText());
-				field.setCreateDate(now);
-				field.setIp(wrapper.getIp());
-				field.setDescription(DescriptionLogUtils.get(beanId));
-				service.insert(field);
+				final EntityUpdateLog log = service.createBean();
+				initLog(log, wrapper);
+				log.setBeanId(beanId);
+				log.setTblName(manager.getEntityTable().getName());
+				log.setOpId(opId + 1);
+				log.setValName(key);
+				log.setFromVal(covertToString(fromVal));
+				log.setToVal(covertToString(toVal));
+				log.setCreateDate(now);
+				log.setDescription(DescriptionLogUtils.get(beanId));
+				service.insert(log);
 			}
 		}
 	}

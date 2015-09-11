@@ -3,11 +3,8 @@ package net.simpleframework.module.log;
 import java.util.Date;
 
 import net.simpleframework.ado.IParamsValue;
-import net.simpleframework.ado.bean.IIdBeanAware;
 import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ado.query.IDataQuery;
-import net.simpleframework.common.BeanUtils;
-import net.simpleframework.common.ID;
 import net.simpleframework.common.StringUtils;
 import net.simpleframework.common.web.html.HtmlUtils;
 import net.simpleframework.ctx.permission.LoginUser;
@@ -26,7 +23,7 @@ public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter<Object> {
 			throws Exception {
 		super.onBeforeDelete(manager, paramsValue);
 		final LoginWrapper wrapper = LoginUser.get();
-		if (wrapper == null) {
+		if (wrapper == null || wrapper.getUserId() == null) {
 			return;
 		}
 
@@ -35,23 +32,15 @@ public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter<Object> {
 			return;
 		}
 
+		final Date now = new Date();
 		final IEntityDeleteLogService service = context.getEntityDeleteLogService();
 		Object o;
 		while ((o = dq.next()) != null) {
 			final EntityDeleteLog log = service.createBean();
+			initLog(log, wrapper);
 			log.setTblName(manager.getEntityTable().getName());
-			if (o instanceof IIdBeanAware) {
-				log.setBeanId(((IIdBeanAware) o).getId());
-			} else {
-				final Object id = BeanUtils.getProperty(o, "id");
-				if (id != null) {
-					log.setBeanId(ID.of(id));
-				}
-			}
-			log.setIp(wrapper.getIp());
-			log.setUserId(wrapper.getUserId());
-			log.setUserText(wrapper.toString());
-			log.setCreateDate(new Date());
+			log.setBeanId(getId(o));
+			log.setCreateDate(now);
 			log.setDescription(StringUtils.substring(HtmlUtils.htmlToText(o.toString()), 128, true));
 			service.insert(log);
 		}
