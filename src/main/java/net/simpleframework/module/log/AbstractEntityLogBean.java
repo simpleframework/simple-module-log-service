@@ -9,7 +9,7 @@ import net.simpleframework.common.ID;
  *         http://www.simpleframework.net
  */
 @SuppressWarnings("serial")
-public abstract class AbstractEntityLogBean extends AbstractLogBean {
+public abstract class AbstractEntityLogBean extends AbstractBaseLogBean {
 	/* 操作的beanid */
 	private ID beanId;
 

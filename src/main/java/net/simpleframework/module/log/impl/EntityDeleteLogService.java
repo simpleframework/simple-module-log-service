@@ -9,8 +9,8 @@ import net.simpleframework.module.log.IEntityDeleteLogService;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class EntityDeleteLogService extends AbstractEntityLogBeanService<EntityDeleteLog> implements
-		IEntityDeleteLogService {
+public class EntityDeleteLogService extends AbstractEntityTblLogBeanService<EntityDeleteLog>
+		implements IEntityDeleteLogService {
 
 	@Override
 	public void onInit() throws Exception {

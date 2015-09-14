@@ -10,7 +10,7 @@ import net.simpleframework.ado.bean.IDescriptionBeanAware;
  *         http://www.simpleframework.net
  */
 @SuppressWarnings("serial")
-public abstract class AbstractLogBean extends AbstractUserAwareBean implements
+public abstract class AbstractBaseLogBean extends AbstractUserAwareBean implements
 		IDescriptionBeanAware {
 	/* 操作人显示名称 */
 	private String userText;

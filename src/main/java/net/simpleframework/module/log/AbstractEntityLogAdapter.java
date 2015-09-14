@@ -36,7 +36,7 @@ public abstract class AbstractEntityLogAdapter<T> extends DbEntityAdapter<T> imp
 		return Convert.toString(val);
 	}
 
-	protected void initLog(final AbstractLogBean log, final LoginWrapper wrapper) {
+	protected void initLog(final AbstractBaseLogBean log, final LoginWrapper wrapper) {
 		log.setUserId(wrapper.getUserId());
 		log.setUserText(wrapper.getUser().getText());
 		log.setIp(wrapper.getIp());

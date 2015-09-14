@@ -14,11 +14,11 @@ import net.simpleframework.module.log.IEntityLogBeanService;
  *         http://www.simpleframework.net
  */
 public abstract class AbstractEntityLogBeanService<T extends AbstractEntityLogBean> extends
-		AbstractLogBeanService<T> implements IEntityLogBeanService<T> {
+		AbstractBaseLogBeanService<T> implements IEntityLogBeanService<T> {
 
 	@Override
 	public int clog(final Object bean) {
-		return count("beanid=?", bean);
+		return count("beanid=?", getIdParam(bean));
 	}
 
 	@Override
@@ -26,6 +26,6 @@ public abstract class AbstractEntityLogBeanService<T extends AbstractEntityLogBe
 		if (bean == null) {
 			return DataQueryUtils.nullQuery();
 		}
-		return queryByParams(FilterItems.of("beanid", bean), oCols);
+		return queryByParams(FilterItems.of("beanid", getIdParam(bean)), oCols);
 	}
 }
