@@ -12,8 +12,6 @@ import net.simpleframework.common.ID;
 public abstract class AbstractEntityLogBean extends AbstractLogBean {
 	/* 操作的beanid */
 	private ID beanId;
-	/* 表名 */
-	private String tblName;
 
 	public ID getBeanId() {
 		return beanId;
@@ -21,13 +19,5 @@ public abstract class AbstractEntityLogBean extends AbstractLogBean {
 
 	public void setBeanId(final ID beanId) {
 		this.beanId = beanId;
-	}
-
-	public String getTblName() {
-		return tblName != null ? tblName.toUpperCase() : "";
-	}
-
-	public void setTblName(final String tblName) {
-		this.tblName = tblName;
 	}
 }
