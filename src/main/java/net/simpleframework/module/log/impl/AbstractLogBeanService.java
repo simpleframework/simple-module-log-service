@@ -16,14 +16,14 @@ import net.simpleframework.module.log.ILogContextAware;
 public abstract class AbstractLogBeanService<T> extends AbstractDbBeanService<T> implements
 		ILogContextAware {
 
-	public int countLog(final Object bean) {
-		return count("beanId=?", bean);
+	public int clog(final Object bean) {
+		return count("beanid=?", bean);
 	}
 
-	public IDataQuery<T> queryLog(final Object bean, final ColumnData... oCols) {
+	public IDataQuery<T> queryLogs(final Object bean, final ColumnData... oCols) {
 		if (bean == null) {
 			return DataQueryUtils.nullQuery();
 		}
-		return queryByParams(FilterItems.of("beanId", bean), oCols);
+		return queryByParams(FilterItems.of("beanid", bean), oCols);
 	}
 }
