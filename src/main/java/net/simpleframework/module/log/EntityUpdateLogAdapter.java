@@ -16,7 +16,7 @@ import net.simpleframework.common.coll.ArrayUtils;
 import net.simpleframework.common.object.ObjectUtils;
 import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
-import net.simpleframework.module.common.DescriptionLogUtils;
+import net.simpleframework.module.common.LogDesc;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -89,7 +89,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 				log.setFromVal(covertToString(fromVal));
 				log.setToVal(covertToString(toVal));
 				log.setCreateDate(now);
-				log.setDescription(DescriptionLogUtils.get(beanId));
+				log.setDescription(LogDesc.get(beanId));
 				_logUpdateService.insert(log);
 			}
 		}

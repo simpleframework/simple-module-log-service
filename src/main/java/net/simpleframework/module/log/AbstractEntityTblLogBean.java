@@ -12,7 +12,7 @@ public abstract class AbstractEntityTblLogBean extends AbstractEntityLogBean {
 	private String tblName;
 
 	public String getTblName() {
-		return tblName != null ? tblName.toUpperCase() : "";
+		return tblName;
 	}
 
 	public void setTblName(final String tblName) {
