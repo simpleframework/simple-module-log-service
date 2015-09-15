@@ -13,7 +13,8 @@ import net.simpleframework.module.log.LoginLog;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class LoginLogService extends AbstractBaseLogBeanService<LoginLog> implements ILoginLogService {
+public class LoginLogService extends AbstractBaseLogBeanService<LoginLog> implements
+		ILoginLogService {
 
 	@Override
 	public LoginLog log(final Object accountId, final String ip, final String desc) {

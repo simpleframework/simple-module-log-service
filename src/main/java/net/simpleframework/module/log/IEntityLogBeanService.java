@@ -9,7 +9,8 @@ import net.simpleframework.ado.query.IDataQuery;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public interface IEntityLogBeanService<T extends AbstractEntityLogBean> extends IBaseLogBeanService<T> {
+public interface IEntityLogBeanService<T extends AbstractEntityLogBean> extends
+		IBaseLogBeanService<T> {
 	/**
 	 * 指定bean的日志数
 	 * 
