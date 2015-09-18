@@ -1,5 +1,10 @@
 package net.simpleframework.module.log;
 
+import net.simpleframework.ado.ColumnData;
+import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.common.ID;
+import net.simpleframework.common.TimePeriod;
+
 /**
  * Licensed under the Apache License, Version 2.0
  * 
@@ -17,4 +22,7 @@ public interface IEntityUpdateLogService extends IEntityTblLogBeanService<Entity
 	 * @return
 	 */
 	EntityUpdateLog getLastLog(Object bean, String vname, String val);
+
+	IDataQuery<EntityUpdateLog> queryLogs(ID userId, String tblname, String beanProperty,
+			TimePeriod period, ColumnData... oCols);
 }

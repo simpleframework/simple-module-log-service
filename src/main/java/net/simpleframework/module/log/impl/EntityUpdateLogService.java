@@ -1,5 +1,12 @@
 package net.simpleframework.module.log.impl;
 
+import net.simpleframework.ado.ColumnData;
+import net.simpleframework.ado.FilterItems;
+import net.simpleframework.ado.query.DataQueryUtils;
+import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.common.ID;
+import net.simpleframework.common.StringUtils;
+import net.simpleframework.common.TimePeriod;
 import net.simpleframework.module.log.EntityUpdateLog;
 import net.simpleframework.module.log.IEntityUpdateLogService;
 
@@ -16,5 +23,24 @@ public class EntityUpdateLogService extends AbstractEntityTblLogBeanService<Enti
 	public EntityUpdateLog getLastLog(final Object bean, final String vname, final String val) {
 		return getBean("beanid=? and valname=? and toval=? order by opid desc", getIdParam(bean),
 				vname, val);
+	}
+
+	@Override
+	public IDataQuery<EntityUpdateLog> queryLogs(final ID userId, final String tblname,
+			final String beanProperty, final TimePeriod period, final ColumnData... oCols) {
+		if (userId == null) {
+			return DataQueryUtils.nullQuery();
+		}
+		final FilterItems params = FilterItems.of("userId", userId);
+		if (StringUtils.hasText(tblname)) {
+			params.addEqual("tblname", tblname);
+		}
+		if (StringUtils.hasText(beanProperty)) {
+			params.addEqual("valname", beanProperty);
+		}
+		if (period != null) {
+			params.addEqual("createdate", period);
+		}
+		return queryByParams(params, oCols);
 	}
 }
