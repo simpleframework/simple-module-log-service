@@ -72,10 +72,10 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 				final String key = col.getName();
 				final Object fromVal = toObject(Convert.convert(original.get(key),
 						BeanUtils.getPropertyType(bean, key)));
-				if (opId == 0 && fromVal == null) {
-					// 第一次，且fromVal为空，不记录
-					continue;
-				}
+				// if (opId == 0 && fromVal == null) {
+				// // 第一次，且fromVal为空，不记录
+				// continue;
+				// }
 				final Object toVal = toObject(BeanUtils.getProperty(bean, key));
 				if (ObjectUtils.objectEquals(fromVal, toVal)) {
 					continue;
