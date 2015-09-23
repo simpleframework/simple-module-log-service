@@ -5,7 +5,6 @@ import java.util.Date;
 import net.simpleframework.ado.IParamsValue;
 import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ado.query.IDataQuery;
-import net.simpleframework.common.ID;
 import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
 import net.simpleframework.module.common.LogDesc;
@@ -38,10 +37,9 @@ public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter<Object> {
 			final EntityDeleteLog log = _logDeleteService.createBean();
 			initLog(log, wrapper);
 			log.setTblName(manager.getEntityTable().getName());
-			final ID beanId = getId(o);
-			log.setBeanId(beanId);
+			log.setBeanId(getId(o));
 			log.setCreateDate(now);
-			log.setDescription(LogDesc.get(beanId));
+			log.setDescription(LogDesc.get(o));
 			_logDeleteService.insert(log);
 		}
 	}

@@ -3,7 +3,6 @@ package net.simpleframework.module.log;
 import java.util.Date;
 
 import net.simpleframework.ado.db.IDbEntityManager;
-import net.simpleframework.common.ID;
 import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
 import net.simpleframework.module.common.LogDesc;
@@ -30,10 +29,9 @@ public class EntityInsertLogAdapter extends AbstractEntityLogAdapter<Object> {
 			final EntityInsertLog log = _logInsertService.createBean();
 			initLog(log, wrapper);
 			log.setTblName(manager.getEntityTable().getName());
-			final ID beanId = getId(o);
-			log.setBeanId(beanId);
+			log.setBeanId(getId(o));
 			log.setCreateDate(now);
-			log.setDescription(LogDesc.get(beanId));
+			log.setDescription(LogDesc.get(o));
 			_logInsertService.insert(log);
 		}
 	}

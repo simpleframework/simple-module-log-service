@@ -89,7 +89,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 				log.setFromVal(covertToString(fromVal));
 				log.setToVal(covertToString(toVal));
 				log.setCreateDate(now);
-				log.setDescription(LogDesc.get(beanId));
+				log.setDescription(LogDesc.get(bean));
 				_logUpdateService.insert(log);
 			}
 		}
