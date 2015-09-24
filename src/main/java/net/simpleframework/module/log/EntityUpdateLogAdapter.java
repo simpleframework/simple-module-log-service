@@ -31,11 +31,6 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 	public void onBeforeUpdate(final IDbEntityManager<Object> manager, final String[] columns,
 			final Object[] beans) throws Exception {
 		super.onBeforeUpdate(manager, columns, beans);
-		if (LogEntity.isDisable()) {
-			LogEntity.enable();
-			return;
-		}
-
 		final LoginWrapper wrapper = LoginUser.get();
 		if (wrapper == null || wrapper.getUserId() == null) {
 			return;
@@ -71,6 +66,11 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 
 		final Date now = new Date();
 		for (final Object bean : beans) {
+			if (LogEntity.isDisable(bean)) {
+				LogEntity.enable(bean);
+				continue;
+			}
+
 			final ID beanId = getId(bean);
 			final int opId = _logUpdateService.max("opId", "beanId=?", beanId).intValue();
 			final Map<String, Object> original = getOriginal(manager, beanId, _columns);

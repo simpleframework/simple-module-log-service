@@ -20,11 +20,6 @@ public class EntityInsertLogAdapter extends AbstractEntityLogAdapter<Object> {
 	public void onAfterInsert(final IDbEntityManager<Object> manager, final Object[] beans)
 			throws Exception {
 		super.onAfterInsert(manager, beans);
-		if (LogEntity.isDisable()) {
-			LogEntity.enable();
-			return;
-		}
-
 		final LoginWrapper wrapper = LoginUser.get();
 		if (wrapper == null || wrapper.getUserId() == null) {
 			return;
@@ -32,6 +27,11 @@ public class EntityInsertLogAdapter extends AbstractEntityLogAdapter<Object> {
 
 		final Date now = new Date();
 		for (final Object o : beans) {
+			if (LogEntity.isDisable(o)) {
+				LogEntity.enable(o);
+				continue;
+			}
+
 			final EntityInsertLog log = _logInsertService.createBean();
 			initLog(log, wrapper);
 			log.setTblName(manager.getEntityTable().getName());

@@ -22,11 +22,6 @@ public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter<Object> {
 	public void onBeforeDelete(final IDbEntityManager<Object> manager, final IParamsValue paramsValue)
 			throws Exception {
 		super.onBeforeDelete(manager, paramsValue);
-		if (LogEntity.isDisable()) {
-			LogEntity.enable();
-			return;
-		}
-
 		final LoginWrapper wrapper = LoginUser.get();
 		if (wrapper == null || wrapper.getUserId() == null) {
 			return;
@@ -40,6 +35,11 @@ public class EntityDeleteLogAdapter extends AbstractEntityLogAdapter<Object> {
 		final Date now = new Date();
 		Object o;
 		while ((o = dq.next()) != null) {
+			if (LogEntity.isDisable(o)) {
+				LogEntity.enable(o);
+				continue;
+			}
+
 			final EntityDeleteLog log = _logDeleteService.createBean();
 			initLog(log, wrapper);
 			log.setTblName(manager.getEntityTable().getName());
