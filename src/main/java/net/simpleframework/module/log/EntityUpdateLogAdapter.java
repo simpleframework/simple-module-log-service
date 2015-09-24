@@ -16,7 +16,8 @@ import net.simpleframework.common.coll.ArrayUtils;
 import net.simpleframework.common.object.ObjectUtils;
 import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
-import net.simpleframework.module.common.LogDesc;
+import net.simpleframework.module.common.log.LdescVal;
+import net.simpleframework.module.common.log.LogEntity;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -30,6 +31,11 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 	public void onBeforeUpdate(final IDbEntityManager<Object> manager, final String[] columns,
 			final Object[] beans) throws Exception {
 		super.onBeforeUpdate(manager, columns, beans);
+		if (LogEntity.isDisable()) {
+			LogEntity.enable();
+			return;
+		}
+
 		final LoginWrapper wrapper = LoginUser.get();
 		if (wrapper == null || wrapper.getUserId() == null) {
 			return;
@@ -89,7 +95,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 				log.setFromVal(covertToString(fromVal));
 				log.setToVal(covertToString(toVal));
 				log.setCreateDate(now);
-				log.setDescription(LogDesc.get(bean));
+				log.setDescription(LdescVal.get(bean));
 				_logUpdateService.insert(log);
 			}
 		}

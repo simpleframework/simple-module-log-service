@@ -5,7 +5,8 @@ import java.util.Date;
 import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
-import net.simpleframework.module.common.LogDesc;
+import net.simpleframework.module.common.log.LdescVal;
+import net.simpleframework.module.common.log.LogEntity;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -19,6 +20,11 @@ public class EntityInsertLogAdapter extends AbstractEntityLogAdapter<Object> {
 	public void onAfterInsert(final IDbEntityManager<Object> manager, final Object[] beans)
 			throws Exception {
 		super.onAfterInsert(manager, beans);
+		if (LogEntity.isDisable()) {
+			LogEntity.enable();
+			return;
+		}
+
 		final LoginWrapper wrapper = LoginUser.get();
 		if (wrapper == null || wrapper.getUserId() == null) {
 			return;
@@ -31,7 +37,7 @@ public class EntityInsertLogAdapter extends AbstractEntityLogAdapter<Object> {
 			log.setTblName(manager.getEntityTable().getName());
 			log.setBeanId(getId(o));
 			log.setCreateDate(now);
-			log.setDescription(LogDesc.get(o));
+			log.setDescription(LdescVal.get(o));
 			_logInsertService.insert(log);
 		}
 	}
