@@ -13,14 +13,17 @@ import net.simpleframework.common.TimePeriod;
  */
 public interface IEntityTblLogBeanService<T extends AbstractEntityTblLogBean> extends
 		IEntityLogBeanService<T> {
+
 	/**
 	 * 查询一段时间内某人所做的日志
 	 * 
 	 * @param userId
-	 * @param tblname
+	 * @param tblnames
 	 * @param period
 	 * @param oCols
 	 * @return
 	 */
+	IDataQuery<T> queryLogs(ID userId, String[] tblnames, TimePeriod period, ColumnData... oCols);
+
 	IDataQuery<T> queryLogs(ID userId, String tblname, TimePeriod period, ColumnData... oCols);
 }
