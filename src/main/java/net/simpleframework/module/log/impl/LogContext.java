@@ -2,7 +2,6 @@ package net.simpleframework.module.log.impl;
 
 import static net.simpleframework.common.I18n.$m;
 import net.simpleframework.ado.db.DbEntityTable;
-import net.simpleframework.ado.db.IDbEntityTableRegistry;
 import net.simpleframework.ctx.AbstractADOModuleContext;
 import net.simpleframework.ctx.Module;
 import net.simpleframework.module.log.DownloadLog;
@@ -25,11 +24,10 @@ import net.simpleframework.module.log.PVLog;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class LogContext extends AbstractADOModuleContext implements ILogContext,
-		IDbEntityTableRegistry {
+public class LogContext extends AbstractADOModuleContext implements ILogContext {
 
 	@Override
-	public DbEntityTable[] createEntityTables() {
+	protected DbEntityTable[] createEntityTables() {
 		return new DbEntityTable[] {
 				new DbEntityTable(EntityUpdateLog.class, "sf_log_entity_update"),
 				new DbEntityTable(EntityInsertLog.class, "sf_log_entity_insert"),
