@@ -1,9 +1,7 @@
 package net.simpleframework.module.log;
 
-import java.io.File;
 import java.util.Date;
 
-import net.simpleframework.common.FileUtils;
 import net.simpleframework.common.ID;
 import net.simpleframework.ctx.AbstractModuleRef;
 import net.simpleframework.ctx.ModuleContextFactory;
@@ -21,9 +19,9 @@ public class LogRef extends AbstractModuleRef {
 		return ModuleContextFactory.get(ILogContext.class);
 	}
 
-	public void logDownload(final Object beanId, final String topic, final File oFile) {
-		getDownloadLogService().log(beanId, oFile.length(),
-				FileUtils.getFilenameExtension(oFile.getName()), topic);
+	public void logDownload(final Object beanId, final long length, final String filetype,
+			final String topic) {
+		getDownloadLogService().log(beanId, length, filetype, topic);
 	}
 
 	public ID logLogin(final Object accountId, final String ip, final String desc) {
