@@ -56,7 +56,7 @@ public class DownloadLogService extends AbstractEntityLogBeanService<DownloadLog
 		dLog.setCreateDate(new Date());
 		dLog.setUserId(loginId);
 		if (wrapper != null) {
-			dLog.setUserText(wrapper.toString());
+			dLog.setUserText(wrapper.getUser().getText());
 		}
 		dLog.setIp(wrapper.getIp());
 		dLog.setDescription(desc);
