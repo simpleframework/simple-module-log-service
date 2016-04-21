@@ -23,6 +23,8 @@ public interface IEntityUpdateLogService extends IEntityTblLogBeanService<Entity
 	 */
 	EntityUpdateLog getLastLog(Object bean, String vname, String val);
 
+	IDataQuery<EntityUpdateLog> queryLogs(Object bean, String beanProperty, ColumnData... oCols);
+
 	IDataQuery<EntityUpdateLog> queryLogs(ID userId, String tblname, String beanProperty,
 			TimePeriod period, ColumnData... oCols);
 }

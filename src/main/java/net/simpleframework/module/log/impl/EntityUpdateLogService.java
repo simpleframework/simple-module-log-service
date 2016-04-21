@@ -26,6 +26,19 @@ public class EntityUpdateLogService extends AbstractEntityTblLogBeanService<Enti
 	}
 
 	@Override
+	public IDataQuery<EntityUpdateLog> queryLogs(final Object bean, final String beanProperty,
+			final ColumnData... oCols) {
+		if (bean == null) {
+			return DataQueryUtils.nullQuery();
+		}
+		final FilterItems params = FilterItems.of("beanid", getIdParam(bean));
+		if (StringUtils.hasText(beanProperty)) {
+			params.addEqual("valname", beanProperty);
+		}
+		return queryByParams(params, oCols);
+	}
+
+	@Override
 	public IDataQuery<EntityUpdateLog> queryLogs(final ID userId, final String tblname,
 			final String beanProperty, final TimePeriod period, final ColumnData... oCols) {
 		if (userId == null) {
