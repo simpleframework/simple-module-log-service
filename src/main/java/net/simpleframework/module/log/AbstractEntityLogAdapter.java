@@ -31,7 +31,7 @@ public abstract class AbstractEntityLogAdapter<T> extends DbEntityAdapter<T> imp
 		if (val instanceof Enum) {
 			return ((Enum<?>) val).name();
 		} else if (val instanceof Date) {
-			return Convert.toDateString((Date) val);
+			return Convert.toDateTimeString((Date) val);
 		}
 		return Convert.toString(val);
 	}
