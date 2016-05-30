@@ -72,6 +72,6 @@ public class LogContext extends AbstractADOModuleContext implements ILogContext 
 
 	@Override
 	protected Module createModule() {
-		return new Module().setName(MODULE_NAME).setText($m("LogContext.0")).setOrder(1);
+		return super.createModule().setName(MODULE_NAME).setText($m("LogContext.0")).setOrder(1);
 	}
 }
