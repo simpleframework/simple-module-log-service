@@ -36,6 +36,9 @@ public class DownloadLog extends AbstractEntityLogBean {
 	}
 
 	public Date getLastUpdate() {
+		if (lastUpdate == null) {
+			lastUpdate = new Date();
+		}
 		return lastUpdate;
 	}
 
