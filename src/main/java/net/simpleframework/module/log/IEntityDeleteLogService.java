@@ -1,5 +1,7 @@
 package net.simpleframework.module.log;
 
+import net.simpleframework.module.log.bean.EntityDeleteLog;
+
 /**
  * Licensed under the Apache License, Version 2.0
  * 

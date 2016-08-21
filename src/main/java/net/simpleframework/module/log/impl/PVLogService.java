@@ -18,7 +18,8 @@ public class PVLogService extends AbstractLogBeanService<PVLog> implements IPVLo
 
 	@Override
 	public PVLog getPVLog(final int lyear, final int lmonth, final int lday, final int lhour) {
-		PVLog log = getBean("lyear=? and lmonth=? and lday=? and lhour=?", lyear, lmonth, lday, lhour);
+		PVLog log = getBean("lyear=? and lmonth=? and lday=? and lhour=?", lyear, lmonth, lday,
+				lhour);
 		if (log == null) {
 			log = createBean();
 			log.setLyear(lyear);

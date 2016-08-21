@@ -1,7 +1,7 @@
 package net.simpleframework.module.log.impl;
 
-import net.simpleframework.module.log.EntityInsertLog;
 import net.simpleframework.module.log.IEntityInsertLogService;
+import net.simpleframework.module.log.bean.EntityInsertLog;
 
 /**
  * Licensed under the Apache License, Version 2.0

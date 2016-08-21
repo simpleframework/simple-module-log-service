@@ -1,13 +1,10 @@
 package net.simpleframework.module.log.impl;
 
 import static net.simpleframework.common.I18n.$m;
+
 import net.simpleframework.ado.db.DbEntityTable;
 import net.simpleframework.ctx.AbstractADOModuleContext;
 import net.simpleframework.ctx.Module;
-import net.simpleframework.module.log.DownloadLog;
-import net.simpleframework.module.log.EntityDeleteLog;
-import net.simpleframework.module.log.EntityInsertLog;
-import net.simpleframework.module.log.EntityUpdateLog;
 import net.simpleframework.module.log.IDownloadLogService;
 import net.simpleframework.module.log.IEntityDeleteLogService;
 import net.simpleframework.module.log.IEntityInsertLogService;
@@ -17,6 +14,10 @@ import net.simpleframework.module.log.ILoginLogService;
 import net.simpleframework.module.log.IPVLogService;
 import net.simpleframework.module.log.LoginLog;
 import net.simpleframework.module.log.PVLog;
+import net.simpleframework.module.log.bean.DownloadLog;
+import net.simpleframework.module.log.bean.EntityDeleteLog;
+import net.simpleframework.module.log.bean.EntityInsertLog;
+import net.simpleframework.module.log.bean.EntityUpdateLog;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -28,8 +29,7 @@ public class LogContext extends AbstractADOModuleContext implements ILogContext 
 
 	@Override
 	protected DbEntityTable[] createEntityTables() {
-		return new DbEntityTable[] {
-				new DbEntityTable(EntityUpdateLog.class, "sf_log_entity_update"),
+		return new DbEntityTable[] { new DbEntityTable(EntityUpdateLog.class, "sf_log_entity_update"),
 				new DbEntityTable(EntityInsertLog.class, "sf_log_entity_insert"),
 				new DbEntityTable(EntityDeleteLog.class, "sf_log_entity_delete"),
 

@@ -1,6 +1,7 @@
 package net.simpleframework.module.log;
 
 import net.simpleframework.ctx.service.ado.db.IDbBeanService;
+import net.simpleframework.module.log.bean.AbstractBaseLogBean;
 
 /**
  * Licensed under the Apache License, Version 2.0

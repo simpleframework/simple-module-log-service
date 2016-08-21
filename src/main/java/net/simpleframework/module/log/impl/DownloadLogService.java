@@ -6,8 +6,8 @@ import java.util.Date;
 import net.simpleframework.common.ID;
 import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
-import net.simpleframework.module.log.DownloadLog;
 import net.simpleframework.module.log.IDownloadLogService;
+import net.simpleframework.module.log.bean.DownloadLog;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -15,8 +15,8 @@ import net.simpleframework.module.log.IDownloadLogService;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class DownloadLogService extends AbstractEntityLogBeanService<DownloadLog> implements
-		IDownloadLogService {
+public class DownloadLogService extends AbstractEntityLogBeanService<DownloadLog>
+		implements IDownloadLogService {
 
 	@Override
 	public void log(final Object beanId, final long size, final String type, final String desc) {

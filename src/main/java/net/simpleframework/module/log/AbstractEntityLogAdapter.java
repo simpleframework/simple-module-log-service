@@ -8,15 +8,17 @@ import net.simpleframework.common.BeanUtils;
 import net.simpleframework.common.Convert;
 import net.simpleframework.common.ID;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
+import net.simpleframework.module.log.bean.AbstractBaseLogBean;
 
 /**
  * Licensed under the Apache License, Version 2.0
  * 
- * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
+ * @author 陈侃(cknet@126.com, 13910090885)
+ *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public abstract class AbstractEntityLogAdapter<T> extends DbEntityAdapter<T> implements
-		ILogContextAware {
+public abstract class AbstractEntityLogAdapter<T> extends DbEntityAdapter<T>
+		implements ILogContextAware {
 
 	protected ID getId(final Object bean) {
 		if (bean instanceof IIdBeanAware) {

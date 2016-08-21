@@ -2,6 +2,7 @@ package net.simpleframework.module.log;
 
 import net.simpleframework.ado.ColumnData;
 import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.module.log.bean.AbstractEntityLogBean;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -9,8 +10,8 @@ import net.simpleframework.ado.query.IDataQuery;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public interface IEntityLogBeanService<T extends AbstractEntityLogBean> extends
-		IBaseLogBeanService<T> {
+public interface IEntityLogBeanService<T extends AbstractEntityLogBean>
+		extends IBaseLogBeanService<T> {
 	/**
 	 * 指定bean的日志数
 	 * 

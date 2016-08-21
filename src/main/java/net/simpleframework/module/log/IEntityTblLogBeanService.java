@@ -4,6 +4,7 @@ import net.simpleframework.ado.ColumnData;
 import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.common.ID;
 import net.simpleframework.common.TimePeriod;
+import net.simpleframework.module.log.bean.AbstractEntityTblLogBean;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -11,8 +12,8 @@ import net.simpleframework.common.TimePeriod;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public interface IEntityTblLogBeanService<T extends AbstractEntityTblLogBean> extends
-		IEntityLogBeanService<T> {
+public interface IEntityTblLogBeanService<T extends AbstractEntityTblLogBean>
+		extends IEntityLogBeanService<T> {
 
 	/**
 	 * 查询一段时间内某人所做的日志
