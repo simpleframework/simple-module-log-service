@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import net.simpleframework.ado.IParamsValue;
+import net.simpleframework.ado.bean.IIdBeanAware;
 import net.simpleframework.ado.db.DbTableColumn;
+import net.simpleframework.ado.db.IDbDataQuery;
 import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ado.db.common.EntityInterceptor;
 import net.simpleframework.common.BeanUtils;
@@ -18,11 +20,13 @@ import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
 import net.simpleframework.module.common.log.LdescVal;
 import net.simpleframework.module.common.log.LogEntity;
+import net.simpleframework.module.log.bean.EntityUpdateLog;
 
 /**
  * Licensed under the Apache License, Version 2.0
  * 
- * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
+ * @author 陈侃(cknet@126.com, 13910090885)
+ *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
 public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
@@ -115,6 +119,15 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 	public void onBeforeDelete(final IDbEntityManager<Object> manager, final IParamsValue paramsValue)
 			throws Exception {
 		super.onBeforeDelete(manager, paramsValue);
-		// 当被删除后,删除日志??
+		// 当被删除后,删除日志
+		final IDbDataQuery<?> dq = manager.queryBeans(paramsValue);
+		Object o;
+		final String tblname = manager.getEntityTable().getName();
+		while ((o = dq.next()) != null) {
+			if (o instanceof IIdBeanAware) {
+				_logUpdateService.deleteWith("tblname=? and beanid=?", tblname,
+						((IIdBeanAware) o).getId());
+			}
+		}
 	}
 }

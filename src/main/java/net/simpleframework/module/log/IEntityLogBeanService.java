@@ -2,6 +2,7 @@ package net.simpleframework.module.log;
 
 import net.simpleframework.ado.ColumnData;
 import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.module.log.bean.AbstractEntityLogBean;
 
 /**
  * Licensed under the Apache License, Version 2.0

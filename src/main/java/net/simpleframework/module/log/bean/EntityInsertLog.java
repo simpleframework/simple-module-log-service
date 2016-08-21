@@ -1,4 +1,4 @@
-package net.simpleframework.module.log;
+package net.simpleframework.module.log.bean;
 
 /**
  * Licensed under the Apache License, Version 2.0

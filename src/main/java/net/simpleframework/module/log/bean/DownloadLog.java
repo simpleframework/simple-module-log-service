@@ -1,4 +1,4 @@
-package net.simpleframework.module.log;
+package net.simpleframework.module.log.bean;
 
 import java.util.Date;
 

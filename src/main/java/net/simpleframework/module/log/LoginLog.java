@@ -2,6 +2,8 @@ package net.simpleframework.module.log;
 
 import java.util.Date;
 
+import net.simpleframework.module.log.bean.AbstractBaseLogBean;
+
 /**
  * Licensed under the Apache License, Version 2.0
  * 
