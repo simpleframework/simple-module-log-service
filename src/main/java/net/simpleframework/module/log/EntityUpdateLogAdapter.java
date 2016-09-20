@@ -42,7 +42,7 @@ public class EntityUpdateLogAdapter extends AbstractEntityLogAdapter<Object> {
 
 		final Class<?> beanClass = manager.getEntityTable().getBeanClass();
 		final Map<String, DbTableColumn> map = DbTableColumn.getTableColumns(beanClass);
-		final List<DbTableColumn> columnList = new ArrayList<DbTableColumn>();
+		final List<DbTableColumn> columnList = new ArrayList<>();
 		final String[] columnArr = beanClass.getAnnotation(EntityInterceptor.class).columns();
 		String[] _columns = null;
 		if (columnArr != null && columnArr.length > 0) {

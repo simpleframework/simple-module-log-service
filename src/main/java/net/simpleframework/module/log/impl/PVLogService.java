@@ -33,7 +33,7 @@ public class PVLogService extends AbstractLogBeanService<PVLog> implements IPVLo
 
 	@Override
 	public Map<Integer, PVLog> getHourStat(final int lyear, final int lmonth, final int lday) {
-		final Map<Integer, PVLog> r = new HashMap<Integer, PVLog>();
+		final Map<Integer, PVLog> r = new HashMap<>();
 		final IDataQuery<PVLog> dq = query("lyear=? and lmonth=? and lday=?", lyear, lmonth, lday);
 		PVLog log;
 		while ((log = dq.next()) != null) {
@@ -47,7 +47,7 @@ public class PVLogService extends AbstractLogBeanService<PVLog> implements IPVLo
 
 	@Override
 	public Map<Integer, PVLog> getDayStat(final int lyear, final int lmonth) {
-		final Map<Integer, PVLog> r = new HashMap<Integer, PVLog>();
+		final Map<Integer, PVLog> r = new HashMap<>();
 		final StringBuilder sql = new StringBuilder();
 		sql.append("select lday, ").append(STAT_COLUMS).append(" from ")
 				.append(getTablename(PVLog.class));
@@ -62,7 +62,7 @@ public class PVLogService extends AbstractLogBeanService<PVLog> implements IPVLo
 
 	@Override
 	public Map<Integer, PVLog> getMonthStat(final int lyear) {
-		final Map<Integer, PVLog> r = new HashMap<Integer, PVLog>();
+		final Map<Integer, PVLog> r = new HashMap<>();
 		final StringBuilder sql = new StringBuilder();
 		sql.append("select lmonth, ").append(STAT_COLUMS).append(" from ")
 				.append(getTablename(PVLog.class));
