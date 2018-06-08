@@ -2,6 +2,12 @@ package net.simpleframework.module.log;
 
 import net.simpleframework.ctx.IModuleContextAware;
 import net.simpleframework.ctx.ModuleContextFactory;
+import net.simpleframework.module.log.i.IDownloadLogService;
+import net.simpleframework.module.log.i.IEntityDeleteLogService;
+import net.simpleframework.module.log.i.IEntityInsertLogService;
+import net.simpleframework.module.log.i.IEntityUpdateLogService;
+import net.simpleframework.module.log.i.ILoginLogService;
+import net.simpleframework.module.log.i.IPVLogService;
 
 /**
  * Licensed under the Apache License, Version 2.0

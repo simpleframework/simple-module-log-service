@@ -7,8 +7,8 @@ import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.common.ID;
 import net.simpleframework.common.StringUtils;
 import net.simpleframework.common.TimePeriod;
-import net.simpleframework.module.log.IEntityUpdateLogService;
 import net.simpleframework.module.log.bean.EntityUpdateLog;
+import net.simpleframework.module.log.i.IEntityUpdateLogService;
 
 /**
  * Licensed under the Apache License, Version 2.0

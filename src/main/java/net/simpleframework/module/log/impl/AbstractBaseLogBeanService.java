@@ -1,7 +1,7 @@
 package net.simpleframework.module.log.impl;
 
-import net.simpleframework.module.log.IBaseLogBeanService;
 import net.simpleframework.module.log.bean.AbstractBaseLogBean;
+import net.simpleframework.module.log.i.IBaseLogBeanService;
 
 /**
  * Licensed under the Apache License, Version 2.0

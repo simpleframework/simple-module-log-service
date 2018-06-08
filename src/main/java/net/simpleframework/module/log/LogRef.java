@@ -5,11 +5,15 @@ import java.util.Date;
 import net.simpleframework.common.ID;
 import net.simpleframework.ctx.AbstractModuleRef;
 import net.simpleframework.ctx.ModuleContextFactory;
+import net.simpleframework.module.log.bean.LoginLog;
+import net.simpleframework.module.log.i.IDownloadLogService;
+import net.simpleframework.module.log.i.ILoginLogService;
 
 /**
  * Licensed under the Apache License, Version 2.0
  * 
- * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
+ * @author 陈侃(cknet@126.com, 13910090885)
+ *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
 public class LogRef extends AbstractModuleRef {

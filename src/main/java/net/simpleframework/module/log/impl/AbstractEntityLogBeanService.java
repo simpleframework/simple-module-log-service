@@ -4,8 +4,8 @@ import net.simpleframework.ado.ColumnData;
 import net.simpleframework.ado.FilterItems;
 import net.simpleframework.ado.query.DataQueryUtils;
 import net.simpleframework.ado.query.IDataQuery;
-import net.simpleframework.module.log.IEntityLogBeanService;
 import net.simpleframework.module.log.bean.AbstractEntityLogBean;
+import net.simpleframework.module.log.i.IEntityLogBeanService;
 
 /**
  * Licensed under the Apache License, Version 2.0

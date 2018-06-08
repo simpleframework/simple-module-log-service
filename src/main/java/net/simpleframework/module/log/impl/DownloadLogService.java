@@ -6,8 +6,8 @@ import java.util.Date;
 import net.simpleframework.common.ID;
 import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.ctx.permission.LoginUser.LoginWrapper;
-import net.simpleframework.module.log.IDownloadLogService;
 import net.simpleframework.module.log.bean.DownloadLog;
+import net.simpleframework.module.log.i.IDownloadLogService;
 
 /**
  * Licensed under the Apache License, Version 2.0

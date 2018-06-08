@@ -1,4 +1,4 @@
-package net.simpleframework.module.log;
+package net.simpleframework.module.log.bean;
 
 import net.simpleframework.ado.bean.AbstractIdBean;
 

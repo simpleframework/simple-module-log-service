@@ -5,8 +5,8 @@ import java.util.Map;
 
 import net.simpleframework.ado.db.common.SQLValue;
 import net.simpleframework.ado.query.IDataQuery;
-import net.simpleframework.module.log.IPVLogService;
-import net.simpleframework.module.log.PVLog;
+import net.simpleframework.module.log.bean.PVLog;
+import net.simpleframework.module.log.i.IPVLogService;
 
 /**
  * Licensed under the Apache License, Version 2.0

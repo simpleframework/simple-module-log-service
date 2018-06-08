@@ -4,8 +4,8 @@ import java.util.Date;
 
 import net.simpleframework.common.ID;
 import net.simpleframework.ctx.permission.PermissionUser;
-import net.simpleframework.module.log.ILoginLogService;
-import net.simpleframework.module.log.LoginLog;
+import net.simpleframework.module.log.bean.LoginLog;
+import net.simpleframework.module.log.i.ILoginLogService;
 
 /**
  * Licensed under the Apache License, Version 2.0

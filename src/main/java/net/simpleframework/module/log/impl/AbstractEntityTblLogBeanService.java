@@ -8,8 +8,8 @@ import net.simpleframework.ado.query.DataQueryUtils;
 import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.common.ID;
 import net.simpleframework.common.TimePeriod;
-import net.simpleframework.module.log.IEntityTblLogBeanService;
 import net.simpleframework.module.log.bean.AbstractEntityTblLogBean;
+import net.simpleframework.module.log.i.IEntityTblLogBeanService;
 
 /**
  * Licensed under the Apache License, Version 2.0
